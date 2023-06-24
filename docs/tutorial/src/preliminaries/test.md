@@ -2,11 +2,11 @@
 
 A few benchmarks of varying size will be used throughout the tutorial. If you 
 haven't already, set them up now. All of the following commands should be 
-entered in `repos/openjdk`.
+entered in `openjdk/`.
 
 1. **HelloWorld** (simplest, will never trigger GC): 
    1. Copy the following code into a new Java file titled "HelloWorld.java" 
-   in `mmtk-openjdk/repos/openjdk`:
+   in `openjdk/`:
       ```java
       class HelloWorld {
          public static void main(String[] args) {
@@ -27,7 +27,7 @@ allocates a small amount of memory but - depending on heap size and the GC
 plan - may not trigger a collection): 
    1. [Copy this code](https://salsa.debian.org/benchmarksgame-team/benchmarksgame/-/blob/master/bencher/programs/fannkuchredux/fannkuchredux.java) 
    into a new file named "fannkuchredux.java" 
-   in `mmtk-openjdk/repos/openjdk`.
+   in `openjdk/`.
    2. Use the command 
    `./build/linux-x86_64-normal-server-$DEBUG_LEVEL/jdk/bin/javac fannkuchredux.java`.
    3. Then, run 
@@ -40,7 +40,7 @@ collections):
    `wget https://sourceforge.net/projects/dacapobench/files/9.12-bach-MR1/dacapo-9.12-MR1-bach.jar/download -O ./dacapo-9.12-MR1-bach.jar`.
    2. DaCapo contains a variety of benchmarks, but this tutorial will only be 
    using lusearch. Run the lusearch benchmark using the command 
-   `./build/linux-x86_64-normal-server-$DEBUG_LEVEL/jdk/bin/java -XX:+UseThirdPartyHeap -Xms512M -Xmx512M -jar ./dacapo-9.12-MR1-bach.jar lusearch` in `repos/openjdk`. 
+   `./build/linux-x86_64-normal-server-$DEBUG_LEVEL/jdk/bin/java -XX:+UseThirdPartyHeap -Xms512M -Xmx512M -jar ./dacapo-9.12-MR1-bach.jar lusearch` in `openjdk/`. 
 
 
 ## Rust Logs
@@ -62,20 +62,9 @@ more information, see the
 You will be using multiple GC plans in this tutorial. You should
 familiarise yourself with how to do this now.
 
-1. The OpenJDK build will always generate in `mmtk-openjdk/repos/openjdk/build`. 
+1. The OpenJDK build will always generate in `openjdk/build`. 
 From the same build, you can run different GC plans by using the environment 
-variable `MMTK_PLAN=[PlanName]`. Generally you won't need multiple VM builds. 
-However, if you do need to keep a build (for instance, to make quick performance
-comparisons), you can do the following: rename either the `build` folder or the 
-folder generated within it (eg `linux-x86_64-normal-server-$DEBUG_LEVEL`). 
-   1. Renaming the `build` folder is the safest method for this.
-   2. If you rename the internal folder, there is a possibility that the new 
-   build will generate incorrectly. If a build appears to generate strangely 
-   quickly, it probably generated badly.
-   3. A renamed build folder can be tested by changing the file path in 
-   commands as appropriate.
-   4. If you plan to completely overwrite a build, deleting the folder you are 
-   writing over will help prevent errors.
+variable `MMTK_PLAN=[PlanName]`. 
 1. Try running your build with `NoGC`. Both HelloWorld and the fannkuchredux 
 benchmark should run without issue. If you then run lusearch, it should fail 
 when a collection is triggered. It is possible to increase the heap size enough 

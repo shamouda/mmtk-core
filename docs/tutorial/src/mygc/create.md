@@ -9,7 +9,7 @@ called `MyGC` which you'll gradually refine and improve upon through the
 course of this tutorial. At the beginning MyGC will resemble the very 
 simple NoGC plan.
 
-1. Each plan is stored in `mmtk-openjdk/repos/mmtk-core/src/plan`. Navigate 
+1. Each plan is stored in `mmtk-openjdk/mmtk-core/src/plan`. Navigate 
 there and create a copy of the folder `nogc`. Rename it to `mygc`.
 3. In *each file* within `mygc`, rename any reference to `nogc` to `mygc`. 
 You will also have to separately rename any reference to `NoGC` to `MyGC`.

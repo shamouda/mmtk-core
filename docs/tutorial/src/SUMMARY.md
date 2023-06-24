@@ -2,14 +2,14 @@
 
 [MMTk Tutorial](./prefix.md)
 
-- [Introduction]()
+- Introduction
     - [What is MMTk?](./intro/what_is_mmtk.md)
     - [What will this tutorial cover?](./intro/what_will_this_tutorial_cover.md)
     - [Glossary](./intro/glossary.md)
-- [Preliminaries]()
+- Preliminaries
     - [Set up MMTk and OpenJDK](./preliminaries/set_up.md)
     - [Test the build](./preliminaries/test.md)
-- [MyGC]()
+- MyGC
     - [Create MyGC](./mygc/create.md)
     - [Building a semispace GC](./mygc/ss/prefix.md)
         - [Allocation](./mygc/ss/alloc.md)

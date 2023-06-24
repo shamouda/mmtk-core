@@ -11,28 +11,24 @@ README files in their respective repositories
  account, it is not required for this tutorial.
 
 First, set up OpenJDK, MMTk, and the binding:
-1. Clone the OpenJDK binding and mmtk-core repository, and install any relevant
-dependencies by following the instructions in the
-[OpenJDK binding repository](https://github.com/mmtk/mmtk-openjdk/blob/master/README.md).
-2. Ensure you can build OpenJDK according to the instructions in the READMEs of 
-[the mmtk-core repository](https://github.com/mmtk/mmtk-core/blob/master/README.md) and the 
-[OpenJDK binding repository](https://github.com/mmtk/mmtk-openjdk/blob/master/README.md).
-   * Use the `slowdebug` option when building the OpenJDK binding. This is the 
-   fastest debug variant to build, and allows for easier debugging and better 
-   testing. The rest of the tutorial will assume you are using `slowdebug`.
-   * You can use the env var `MMTK_PLAN=[PlanName]` to choose a plan to use at run-time.
-   The plans that are relevant to this tutorial are `NoGC` and `SemiSpace`.
-   * Make sure you *only* use the env var `MMTK_PLAN=[PlanName]` when you run the generated `java` binary
-   (`./build/linux-x86_64-normal-server-$DEBUG_LEVEL/jdk/bin/java`). Do not set `MMTK_PLAN`
-   when you build OpenJDK (if you already have set the env var `MMTK_PLAN`, you would need to do
-   `export MMTK_PLAN=` or `unset MMTK_PLAN` to clear the env var before building).
+1. Install the required dependencies following the instructions at [mmtk-dev-env](https://github.com/mmtk/mmtk-dev-env).
+1. Clone the OpenJDK binding and mmtk-core repository following the instructions at the [OpenJDK binding repository]. The instructions provides multiple options for building the OpenGDK binding. Choose the following options:
+   *  Get a local copy of MMTk-core:
 
-The MMTk OpenJDK binding ships with a fixed version of mmtk-core, specified in `mmtk-openjdk/mmtk/Cargo.toml`.
-For local development, you would need to build the binding with a local copy of the mmtk-core repo that you
-can modify. You would need to point the mmtk dependency to a local path.
-1. Find `mmtk` under `[dependencies]` in `mmtk-openjdk/mmtk/Cargo.toml`. It should point
-to the mmtk-core git path with a specific revision.
-2. Comment out the line for the git dependency, and uncomment the following line for a local dependency.
-3. The local dependency points to `mmtk-openjdk/repos/mmtk-core` by default. If your local mmtk-core path is
-not `mmtk-openjdk/repos/mmtk-core`, modify the path to point to your local mmtk-core.
-4. Rebuild the OpenJDK binding.
+      [Checkout MMTk core] is mentioned as an optional step in the instructions.
+      However, we need it to be done in this tutorial.
+      So don't skip this step.
+
+   *  Use the `slowdebug` build option:
+   
+      This is the fastest debug variant to build, and allows for easier debugging and better 
+      testing. The rest of the tutorial will assume you are using `slowdebug`.
+
+## Keeping multiple JVM builds
+
+If you do need to keep multiple JVMs with different configurations, you can do so by renaming the `build` folder or the 
+folder generated within it (eg `linux-x86_64-normal-server-$DEBUG_LEVEL`) after build completes.
+
+[OpenJDK binding repository]:https://github.com/mmtk/mmtk-openjdk/blob/master/README.md
+[mmtk-core repository]:https://github.com/mmtk/mmtk-core/blob/master/README.md
+[Checkout MMTk core]:https://github.com/mmtk/mmtk-openjdk/blob/master/README.md#checkout-mmtk-core-optional
